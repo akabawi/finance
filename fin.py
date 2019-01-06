@@ -10,7 +10,14 @@ def total_year(d):
 
 	return sum(a)
 
+def total_month(d,m):
 
+	a=[]
+	for i in d.iterrows():
+		if i[1].iloc[1] == m:
+			a.append(i[1].iloc[4])
+
+	return sum(a)
 
 
 
@@ -24,4 +31,7 @@ xl=pd.ExcelFile(file)
 
 df = xl.parse('Expenses')
 
-print(total_year(df))
+for i in range(2,13):
+	print(str(i) + ": " + str(total_month(df,i)))
+
+#print("Total for the year: AED " + str(total_year(df)))
