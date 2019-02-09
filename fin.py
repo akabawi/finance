@@ -30,7 +30,7 @@ def display_cat(d):
 		for n in d.iterrows():
 			if n[1].iloc[3] == i:
 				tm = tm + int(n[1].iloc[4])
-		print (i + ": " + str(tm))		
+		print (i + ": " + format(tm,",d"))		
 
 
 
@@ -46,9 +46,9 @@ xl=pd.ExcelFile(file)
 df = xl.parse('Expenses')
 
 for i in range(2,13):
-	print(str(i) + ": " + str(total_month(df,i)))
+	print(format(i,"02d") + ": " + format(total_month(df,i), ",d"))
 
-print("\nTotal for the year: AED " + str(total_year(df)))
-print("\nAverage Monthly Spend: AED " + str(int(total_year(df)/11)) + "\n")
+print("\nTotal for the year: " + format(total_year(df) , ",d") ) 
+print("\nAverage Monthly Spend: " + format(int(total_year(df)/11),",d") + "\n")
 
 display_cat(df)
